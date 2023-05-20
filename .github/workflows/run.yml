@@ -28,7 +28,7 @@ jobs:
           wget https://odp.met.hu/climate/observations_hungary/daily/recent/HABP_1D_46400_akt.zip
 
       - name: Read secrets
-        run: echo "${{ secrets.AUTH_JSON }}" > auth.json
+        run: echo "${{ secrets.AUTH_JSON_BASE64 }}" | base64 -d > auth.json
           
       - uses: montudor/action-zip@v1
         with:
