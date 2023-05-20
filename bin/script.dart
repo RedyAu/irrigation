@@ -117,9 +117,31 @@ main() async {
   indexFile.writeAsStringSync('''
 # FodorHOME Necessary Water for Irrigation
 
-This site hosts necessary irrigation values that our watering system follows.
+This site hosts necessary irrigation values that our watering system follows. [About](https://github.com/redyau/irrigation)
 
 Last updated: ✅ `${DateTime.now().toIso8601String()}`
+
+---
+
+## Weekly values
+
+Over the last week: `${weekRain.precise} mm` rainfall, `${weekMaxTemp.precise} °C` average daily maximal temperature.
+
+Total amount of water needed: `${weekWaterNeeded.precise} mm`
+
+### [Watering needed over the last week](lastweek.txt) - `${weekIrrigate.precise} mm`
+
+---
+
+## Today's values
+
+Today's forecast: `${todayRain.precise} mm` rainfall, `${todayMaxTemp.precise} °C` maximum temperature.
+
+Total amount of water needed: `${waterAmountFor(todayMaxTemp).precise} mm`
+
+### [Watering needed today](today.txt) - `${todayIrrigate.precise} mm`
+
+Values update every day around midnight.
 
 ---
 
@@ -135,36 +157,6 @@ Last updated: ✅ `${DateTime.now().toIso8601String()}`
 Water needed = `(squareFactor * temperature^2) + (linearFactor * temperature) + offset` - Calcualted for each day separately.
 
 [Edit config](https://github.com/RedyAu/irrigation/edit/main/config.json)
-
----
-
-## Weekly value calculation plan:
- - Get last week's average temperature
- - Calculate necessary mm-s of irrigation
- - Get last week's rainfall in mm-s and subtract it from previous value
-
-Note: Last week is a rolling value of last 7 days.
-
-Over the last week: `${weekRain.precise} mm` rainfall, `${weekMaxTemp.precise} °C` average daily maximal temperature.
-
-Total amount of water needed: `${weekWaterNeeded.precise} mm`
-
-### [Watering needed over the last week](lastweek.txt) - `${weekIrrigate.precise} mm`
-
----
-
-## Today's value calculation plan:
- - Get today's forecasted mean temperature
- - Calculate necessary mm-s of irrigation
- - Get today's forecasted rainfall in mm-s and subtract it from previous value
-
-Today's forecast: `${todayRain.precise} mm` rainfall, `${todayMaxTemp.precise} °C` maximum temperature.
-
-Total amount of water needed: `${waterAmountFor(todayMaxTemp).precise} mm`
-
-### [Watering needed today](today.txt) - `${todayIrrigate.precise} mm`
-
-Values update every day around midnight.
 ''');
 
   exit(0);
