@@ -69,7 +69,6 @@ main() async {
   double weekIrrigate = weekWaterNeeded - weekRain;
 
   if (weekMaxTemp < minimumTemperatureForIrrigation) weekIrrigate = 0;
-  if (weekIrrigate < 0) weekIrrigate = 0;
 
   File lastWeekFile = File('docs/lastweek.txt');
   lastWeekFile.createSync(recursive: true);
@@ -107,7 +106,6 @@ main() async {
   double todayIrrigate = waterAmountFor(todayMaxTemp) - todayRain;
 
   if (todayMaxTemp < minimumTemperatureForIrrigation) todayIrrigate = 0;
-  if (todayIrrigate < 0) todayIrrigate = 0;
 
   File todayFile = File('docs/today.txt');
   todayFile.createSync(recursive: true);
