@@ -129,8 +129,9 @@ Last updated: ✅ `${DateTime.now().toIso8601String()}`
 ---
 
 ## Config:
+
 | Variable | Value |
-| --- | --- |
+|-----|-----|
 | squareFactor | `$squareFactor` |
 | linearFactor | `$linearFactor` |
 | offset | `$offset` |
@@ -147,11 +148,11 @@ Last updated: ✅ `${DateTime.now().toIso8601String()}`
 
 Note: Last week is a rolling value of last 7 days.
 
-`$weekRain mm` rain, `$weekMaxTemp °C` average temperature.
+Over the last week: `$weekRain mm` rainfall, `$weekMaxTemp °C` average daily maximal temperature.
 
 Total amount of water needed: `${waterAmountFor(weekMaxTemp)} mm`
 
-### [Irrigation needed over the last week](lastweek.txt) - `${weekIrrigate} mm`
+### [Watering needed over the last week](lastweek.txt) - `${weekIrrigate} mm`
 
 ---
 
@@ -160,11 +161,11 @@ Total amount of water needed: `${waterAmountFor(weekMaxTemp)} mm`
  - Calculate necessary mm-s of irrigation
  - Get today's forecasted rainfall in mm-s and subtract it from previous value
 
-`$todayRain mm` rain, `$todayMaxTemp °C` average temperature.
+Today's forecast: `$todayRain mm` rainfall, `$todayMaxTemp °C` maximum temperature.
 
 Total amount of water needed: `${waterAmountFor(todayMaxTemp)} mm`
 
-### [Irrigaton needed today](today.txt) - `${todayIrrigate} mm`
+### [Watering needed today](today.txt) - `${todayIrrigate} mm`
 
 Values update every day around midnight.
 ''');
