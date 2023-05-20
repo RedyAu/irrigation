@@ -142,7 +142,7 @@ Note: Last week is a rolling value of last 7 days.
 
 Over the last week: `${weekRain.precise} mm` rainfall, `${weekMaxTemp.precise} °C` average daily maximal temperature.
 
-Total amount of water needed: `${waterAmountFor(weekMaxTemp).precise} mm`
+Total amount of water needed: `${(waterAmountFor(weekMaxTemp) * 7).precise} mm`
 
 ### [Watering needed over the last week](lastweek.txt) - `${weekIrrigate.precise} mm`
 
