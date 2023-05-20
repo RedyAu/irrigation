@@ -11,14 +11,13 @@ late String apiKey;
 late String query;
 
 main() async {
-  print('Reading config');
+  print('Reading config, calculating week.');
 
   File configFile = File('config.json');
   if (!configFile.existsSync()) {
     print('Config file not found');
     return 1;
   }
-
   String config = configFile.readAsStringSync();
   squareFactor = jsonDecode(config)['squareFactor'] as double;
   linearFactor = jsonDecode(config)['linearFactor'] as double;
@@ -62,19 +61,16 @@ main() async {
           .reduce((value, element) => value + element) /
       last7days.length);
 
-  print('Last 7 days: $weekRain mm rain, $weekMaxTemp °C average temperature');
-
   double weekIrrigate = waterAmountFor(weekMaxTemp) - weekRain;
 
   if (weekMaxTemp < minimumTemperatureForIrrigation) weekIrrigate = 0;
   if (weekIrrigate < 0) weekIrrigate = 0;
 
-  print('Water needed for 7 days: ${waterAmountFor(weekMaxTemp)} mm');
-  print('Water to irrigate for 7 days: $weekIrrigate mm');
-
   File lastWeekFile = File('docs/lastweek.txt');
   lastWeekFile.createSync(recursive: true);
-  lastWeekFile.writeAsStringSync(weekIrrigate.toStringAsPrecision(2));
+  lastWeekFile.writeAsStringSync(weekIrrigate.precise);
+
+  print("Reading auth, calculating today.");
 
   File authFile = File('auth.json');
   if (!configFile.existsSync()) {
@@ -103,22 +99,18 @@ main() async {
       json['forecast']['forecastday'][0]['day']['totalprecip_mm'];
   double todayMaxTemp = json['forecast']['forecastday'][0]['day']['maxtemp_c'];
 
-  print('Today: $todayRain mm rain, $todayMaxTemp °C average temperature');
-
   double todayIrrigate = waterAmountFor(todayMaxTemp) - todayRain;
 
   if (todayMaxTemp < minimumTemperatureForIrrigation) todayIrrigate = 0;
   if (todayIrrigate < 0) todayIrrigate = 0;
 
-  print('Water needed for today: ${waterAmountFor(todayMaxTemp)} mm');
-  print('Water to irrigate today: $todayIrrigate mm');
-
   File todayFile = File('docs/today.txt');
   todayFile.createSync(recursive: true);
-  todayFile.writeAsStringSync(todayIrrigate.toStringAsPrecision(2));
+  todayFile.writeAsStringSync(todayIrrigate.precise);
 
   File indexFile = File('docs/index.md');
   indexFile.createSync(recursive: true);
+
   indexFile.writeAsStringSync('''
 # FodorHOME Necessary Water for Irrigation
 
@@ -148,11 +140,11 @@ Last updated: ✅ `${DateTime.now().toIso8601String()}`
 
 Note: Last week is a rolling value of last 7 days.
 
-Over the last week: `$weekRain mm` rainfall, `$weekMaxTemp °C` average daily maximal temperature.
+Over the last week: `${weekRain.precise} mm` rainfall, `${weekMaxTemp.precise} °C` average daily maximal temperature.
 
-Total amount of water needed: `${waterAmountFor(weekMaxTemp)} mm`
+Total amount of water needed: `${waterAmountFor(weekMaxTemp).precise} mm`
 
-### [Watering needed over the last week](lastweek.txt) - `${weekIrrigate} mm`
+### [Watering needed over the last week](lastweek.txt) - `${weekIrrigate.precise} mm`
 
 ---
 
@@ -161,11 +153,11 @@ Total amount of water needed: `${waterAmountFor(weekMaxTemp)} mm`
  - Calculate necessary mm-s of irrigation
  - Get today's forecasted rainfall in mm-s and subtract it from previous value
 
-Today's forecast: `$todayRain mm` rainfall, `$todayMaxTemp °C` maximum temperature.
+Today's forecast: `${todayRain.precise} mm` rainfall, `${todayMaxTemp.precise} °C` maximum temperature.
 
-Total amount of water needed: `${waterAmountFor(todayMaxTemp)} mm`
+Total amount of water needed: `${waterAmountFor(todayMaxTemp).precise} mm`
 
-### [Watering needed today](today.txt) - `${todayIrrigate} mm`
+### [Watering needed today](today.txt) - `${todayIrrigate.precise} mm`
 
 Values update every day around midnight.
 ''');
@@ -177,4 +169,10 @@ double waterAmountFor(double temperature) {
   return squareFactor * (temperature * temperature) +
       linearFactor * temperature +
       offset;
+}
+
+extension FixedPrecision on double {
+  String get precise {
+    return toStringAsPrecision(4);
+  }
 }
