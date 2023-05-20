@@ -38,5 +38,5 @@ jobs:
         run: |
           git add docs
           git commit -m "Upload new data"
-          git push origin master
+          git push origin main
       
