@@ -22,6 +22,7 @@ jobs:
           
       - name: Download and unpack weather data from OMSZ
         run: |
+          mkdir -p lastweek
           cd lastweek
           rm -rf .
           wget https://odp.met.hu/climate/observations_hungary/daily/recent/HABP_1D_46400_akt.zip
