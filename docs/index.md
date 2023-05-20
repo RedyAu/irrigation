@@ -7,6 +7,7 @@ Last updated: ✅ `2023-05-20T19:10:21.226497`
 ---
 
 ## Config:
+
 | Variable | Value | Explanation |
 |-------|--------|---------|
 | mmForCelsius | `2.0` | How many mm-s of water is needed for 1 °C of temperature difference |
