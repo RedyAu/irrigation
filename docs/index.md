@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows.
 
-Last updated: ✅ `2023-05-20T20:20:30.185501`
+Last updated: ✅ `2023-05-20T21:07:05.873433`
 
 ---
 
@@ -11,7 +11,7 @@ Last updated: ✅ `2023-05-20T20:20:30.185501`
 | Variable | Value |
 |-----|-----|
 | squareFactor | `0.0086` |
-| linearFactor | `0.1286` |
+| linearFactor | `-0.1286` |
 | offset | `2.0286` |
 | minimumTemperatureForIrrigation | `10.0` |
 
@@ -26,11 +26,11 @@ Last updated: ✅ `2023-05-20T20:20:30.185501`
 
 Note: Last week is a rolling value of last 7 days.
 
-Over the last week: `19.299999999999997 mm` rainfall, `17.728571428571428 °C` average daily maximal temperature.
+Over the last week: `19.30 mm` rainfall, `17.73 °C` average daily maximal temperature.
 
-Total amount of water needed: `7.011493591836735 mm`
+Total amount of water needed: `2.452 mm`
 
-### [Watering needed over the last week](lastweek.txt) - `0.0 mm`
+### [Watering needed over the last week](lastweek.txt) - `0.000 mm`
 
 ---
 
@@ -39,10 +39,10 @@ Total amount of water needed: `7.011493591836735 mm`
  - Calculate necessary mm-s of irrigation
  - Get today's forecasted rainfall in mm-s and subtract it from previous value
 
-Today's forecast: `0.3 mm` rainfall, `25.0 °C` maximum temperature.
+Today's forecast: `0.3000 mm` rainfall, `25.20 °C` maximum temperature.
 
-Total amount of water needed: `10.6186 mm`
+Total amount of water needed: `4.249 mm`
 
-### [Watering needed today](today.txt) - `10.3186 mm`
+### [Watering needed today](today.txt) - `3.949 mm`
 
 Values update every day around midnight.
