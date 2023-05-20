@@ -1,0 +1,31 @@
+name: Irrigation Scripts Build
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: szenius/set-timezone@v1.1
+        with:
+          timezoneLinux: "Europe/Budapest"
+      - uses: actions/checkout@v3
+      
+      - name: Git Config
+        run: |
+          git config user.name "FodorHOME Irrigation"
+          git config user.email "home@fodor.pro"
+          
+      - name: Compile
+        run: dart compile exe ./bin/lastweek.dart
+
+      - name: Publish changes
+        run: |
+          git add bin
+          git commit -m "Upload new build"
+          git push origin master
+      

@@ -30,7 +30,13 @@ jobs:
       - uses: montudor/action-zip@v1
         with:
           args: unzip -qq lastweek/HABP_1D_46400_akt.zip -d lastweek
-          
-      - name: List file structure
-        run: tree .
+
+      - name: Run Last Week
+        run: ./bin/lastweek.exe
+
+      - name: Publish changes
+        run: |
+          git add docs
+          git commit -m "Upload new data"
+          git push origin master
       
