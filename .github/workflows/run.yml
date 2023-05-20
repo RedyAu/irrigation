@@ -34,11 +34,8 @@ jobs:
         with:
           args: unzip -qq lastweek/HABP_1D_46400_akt.zip -d lastweek
 
-      - name: Run Last Week Script
-        run: ./bin/lastweek.exe
-
-      - name: Run Today Script
-        run: ./bin/today.exe
+      - name: Run Script
+        run: ./bin/script.exe
 
       - name: Publish changes
         run: |

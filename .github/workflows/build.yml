@@ -24,11 +24,8 @@ jobs:
         with:
           sdk: stable
           
-      - name: Compile Last Week Script
-        run: dart compile exe ./bin/lastweek.dart
-
-      - name: Compile Today Script
-        run: dart compile exe ./bin/today.dart
+      - name: Compile Script
+        run: dart compile exe ./bin/script.dart
 
       - name: Publish changes
         run: |
