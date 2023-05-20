@@ -3,6 +3,7 @@ import 'dart:io';
 
 late double mmForCelsius;
 late double mmForCelsiusOffset;
+late double minimumTemperatureForIrrigation;
 
 int main() {
   print('Reading config');
@@ -16,6 +17,8 @@ int main() {
   String config = configFile.readAsStringSync();
   mmForCelsius = jsonDecode(config)['mmForCelsius'] as double;
   mmForCelsiusOffset = jsonDecode(config)['mmForCelsiusOffset'] as double;
+  minimumTemperatureForIrrigation =
+      jsonDecode(config)['minimumTemperatureForIrrigation'] as double;
 
   List<String> lines = Directory('lastweek')
       .listSync()
@@ -60,7 +63,7 @@ int main() {
 
   double mmWaterToIrrigate = mmWaterNeeded - sumOfRain;
 
-  if (avgTemperature < 10) mmWaterToIrrigate = 0;
+  if (avgTemperature < minimumTemperatureForIrrigation) mmWaterToIrrigate = 0;
   if (mmWaterToIrrigate < 0) mmWaterToIrrigate = 0;
 
   print('Water needed for 7 days: $mmWaterNeeded mm');
