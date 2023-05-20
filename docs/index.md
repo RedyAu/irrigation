@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows.
 
-Last updated: ✅ `2023-05-20T21:11:58.120482`
+Last updated: ✅ `2023-05-20T21:15:20.321171`
 
 ---
 
@@ -28,7 +28,7 @@ Note: Last week is a rolling value of last 7 days.
 
 Over the last week: `19.30 mm` rainfall, `17.73 °C` average daily maximal temperature.
 
-Total amount of water needed: `2.452 mm`
+Total amount of water needed: `17.16 mm`
 
 ### [Watering needed over the last week](lastweek.txt) - `0.000 mm`
 
