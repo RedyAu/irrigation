@@ -72,7 +72,7 @@ main() async {
 
   File lastWeekFile = File('docs/lastweek.txt');
   lastWeekFile.createSync(recursive: true);
-  lastWeekFile.writeAsStringSync(weekIrrigate.precise);
+  lastWeekFile.writeAsStringSync("§" + weekIrrigate.precise);
 
   print("Reading auth, calculating today.");
 
@@ -109,7 +109,7 @@ main() async {
 
   File todayFile = File('docs/today.txt');
   todayFile.createSync(recursive: true);
-  todayFile.writeAsStringSync(todayIrrigate.precise);
+  todayFile.writeAsStringSync("§" + todayIrrigate.precise);
 
   File indexFile = File('docs/index.md');
   indexFile.createSync(recursive: true);
