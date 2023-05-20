@@ -52,7 +52,6 @@ main() async {
           element.key.isAfter(DateTime.now().subtract(Duration(days: 8))))
       .toList());
 
-
   double weekRain = last7days.values
       .map((e) => e[0])
       .reduce((value, element) => value + element);
@@ -134,6 +133,8 @@ Last updated: ✅ `${DateTime.now().toIso8601String()}`
 | linearFactor | `$linearFactor` |
 | offset | `$offset` |
 | minimumTemperatureForIrrigation | `$minimumTemperatureForIrrigation` |
+
+Water needed = `(squareFactor * temperature^2) + (linearFactor * temperature) + offset` - Calcualted for each day separately.
 
 [Edit config](https://github.com/RedyAu/irrigation/edit/main/config.json)
 
