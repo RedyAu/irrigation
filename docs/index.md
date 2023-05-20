@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows.
 
-Last updated: ✅ `2023-05-20T21:15:20.321171`
+Last updated: ✅ `2023-05-20T22:23:56.339346`
 
 ---
 
@@ -13,7 +13,9 @@ Last updated: ✅ `2023-05-20T21:15:20.321171`
 | squareFactor | `0.0086` |
 | linearFactor | `-0.1286` |
 | offset | `2.0286` |
-| minimumTemperatureForIrrigation | `10.0` |
+| minimumTemperatureForIrrigation | `15.0` |
+
+Water needed = `(squareFactor * temperature^2) + (linearFactor * temperature) + offset` - Calcualted for each day separately.
 
 [Edit config](https://github.com/RedyAu/irrigation/edit/main/config.json)
 
@@ -28,7 +30,7 @@ Note: Last week is a rolling value of last 7 days.
 
 Over the last week: `19.30 mm` rainfall, `17.73 °C` average daily maximal temperature.
 
-Total amount of water needed: `17.16 mm`
+Total amount of water needed: `17.68 mm`
 
 ### [Watering needed over the last week](lastweek.txt) - `0.000 mm`
 
