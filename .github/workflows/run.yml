@@ -1,0 +1,35 @@
+name: Irrigation CRON Run
+
+on:
+  schedule:
+   - cron: '30 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: szenius/set-timezone@v1.1
+        with:
+          timezoneLinux: "Europe/Budapest"
+      - uses: actions/checkout@v3
+      
+      - name: Git Config
+        run: |
+          git config user.name "FodorHOME Irrigation"
+          git config user.email "home@fodor.pro"
+          
+      - name: Download and unpack weather data from OMSZ
+        run: |
+          cd lastweek
+          rm -rf .
+          wget https://odp.met.hu/climate/observations_hungary/daily/recent/HABP_1D_46400_akt.zip
+          
+      - uses: montudor/action-zip@v1
+        with:
+          args: unzip -qq HABP_1D_46400_akt.zip -d .
+          
+      - name: List file structure
+        run: tree .
+      
