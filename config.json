@@ -1,3 +1,4 @@
 {
-  "mmForCelsius": 2.0
+  "mmForCelsius": 2.0,
+  "mmForCelsiusOffset": 0.0
 }

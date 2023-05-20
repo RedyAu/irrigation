@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 late double mmForCelsius;
+late double mmForCelsiusOffset;
 
 int main() {
   print('Reading config');
@@ -14,6 +15,7 @@ int main() {
 
   String config = configFile.readAsStringSync();
   mmForCelsius = jsonDecode(config)['mmForCelsius'] as double;
+  mmForCelsiusOffset = jsonDecode(config)['mmForCelsiusOffset'] as double;
 
   List<String> lines = Directory('lastweek')
       .listSync()
