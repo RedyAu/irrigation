@@ -31,5 +31,5 @@ jobs:
         run: |
           git add bin
           git commit -m "Upload new build"
-          git push origin master
+          git push origin main
       
