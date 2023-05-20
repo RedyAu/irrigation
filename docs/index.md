@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows.
 
-Last updated: ✅ `2023-05-20T21:07:05.873433`
+Last updated: ✅ `2023-05-20T21:11:58.120482`
 
 ---
 
