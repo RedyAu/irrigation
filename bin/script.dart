@@ -134,10 +134,12 @@ Last updated: ✅ `${DateTime.now().toIso8601String()}`
 
 ---
 
-Config:
-  - mmForCelsius: `$mmForCelsius`
-  - mmForCelsiusOffset: `$mmForCelsiusOffset`
-  - minimumTemperatureForIrrigation: `$minimumTemperatureForIrrigation`
+## Config:
+| Variable | Value | Explanation |
+| --- | --- | --- |
+| mmForCelsius | `$mmForCelsius` | How many mm-s of water is needed for 1 °C of temperature difference |
+| mmForCelsiusOffset | `$mmForCelsiusOffset` | Add this value to the irrigation value after calculating it |
+| minimumTemperatureForIrrigation | `$minimumTemperatureForIrrigation` | Below this temperature, no irrigation is needed |
 
 [Edit config](https://github.com/RedyAu/irrigation/edit/main/config.json)
 
@@ -145,27 +147,29 @@ Config:
 
 ## Weekly value calculation plan:
  - Get last week's average temperature
- - Calculate necessary `mm`s of irrigation
- - Get last week's rainfall in `mm`s and subtract it from previous value
+ - Calculate necessary mm-s of irrigation
+ - Get last week's rainfall in mm-s and subtract it from previous value
 
 Note: Last week is a rolling value of last 7 days.
 
-`$week_sumOfRain mm` rain, `$week_avgTemperature °C` average temperature.\
+`$week_sumOfRain mm` rain, `$week_avgTemperature °C` average temperature.
+
 Total amount of water needed: `$week_mmWaterNeeded mm`
 
-### [Weekly value](lastweek.txt) - `${week_mmWaterToIrrigate} mm`
+### [Irrigation needed over the last week](lastweek.txt) - `${week_mmWaterToIrrigate} mm`
 
 ---
 
 ## Today's value calculation plan:
  - Get today's forecasted mean temperature
- - Calculate necessary `mm`s of irrigation
- - Get today's forecasted rainfall in `mm`s and subtract it from previous value
+ - Calculate necessary mm-s of irrigation
+ - Get today's forecasted rainfall in mm-s and subtract it from previous value
 
-`$today_sumOfRain mm` rain, `$today_avgTemperature °C` average temperature.\
+`$today_sumOfRain mm` rain, `$today_avgTemperature °C` average temperature.
+
 Total amount of water needed: `$today_mmWaterNeeded mm`
 
-### [Today's value](today.txt) - `${today_mmWaterToIrrigate} mm`
+### [Irrigaton needed today](today.txt) - `${today_mmWaterToIrrigate} mm`
 
 Values update every day around midnight.
 ''');
