@@ -52,6 +52,7 @@ main() async {
           element.key.isAfter(DateTime.now().subtract(Duration(days: 8))))
       .toList());
 
+
   double weekRain = last7days.values
       .map((e) => e[0])
       .reduce((value, element) => value + element);
@@ -61,7 +62,12 @@ main() async {
           .reduce((value, element) => value + element) /
       last7days.length);
 
-  double weekIrrigate = (waterAmountFor(weekMaxTemp) * 7) - weekRain;
+  // get water amount for each day separately
+  double weekWaterNeeded = last7days.entries
+      .map((e) => waterAmountFor(e.value[1]))
+      .reduce((value, element) => value + element);
+
+  double weekIrrigate = weekWaterNeeded - weekRain;
 
   if (weekMaxTemp < minimumTemperatureForIrrigation) weekIrrigate = 0;
   if (weekIrrigate < 0) weekIrrigate = 0;
@@ -142,7 +148,7 @@ Note: Last week is a rolling value of last 7 days.
 
 Over the last week: `${weekRain.precise} mm` rainfall, `${weekMaxTemp.precise} °C` average daily maximal temperature.
 
-Total amount of water needed: `${(waterAmountFor(weekMaxTemp) * 7).precise} mm`
+Total amount of water needed: `${weekWaterNeeded.precise} mm`
 
 ### [Watering needed over the last week](lastweek.txt) - `${weekIrrigate.precise} mm`
 
