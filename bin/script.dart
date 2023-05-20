@@ -61,7 +61,7 @@ main() async {
           .reduce((value, element) => value + element) /
       last7days.length);
 
-  double weekIrrigate = waterAmountFor(weekMaxTemp) - weekRain;
+  double weekIrrigate = (waterAmountFor(weekMaxTemp) * 7) - weekRain;
 
   if (weekMaxTemp < minimumTemperatureForIrrigation) weekIrrigate = 0;
   if (weekIrrigate < 0) weekIrrigate = 0;
