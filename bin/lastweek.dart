@@ -71,7 +71,7 @@ int main() {
 
   File lastWeekFile = File('docs/lastweek.txt');
   lastWeekFile.createSync(recursive: true);
-  lastWeekFile.writeAsStringSync(mmWaterToIrrigate.toString());
+  lastWeekFile.writeAsStringSync(mmWaterToIrrigate.toStringAsPrecision(2));
 
   return 0;
 }
