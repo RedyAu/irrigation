@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows. [About](https://github.com/redyau/irrigation)
 
-Last updated: ✅ `2023-05-21T02:11:19.141844`
+Last updated: ✅ `2023-05-21T04:24:48.212216`
 
 ---
 
@@ -18,11 +18,11 @@ Total amount of water needed: `15.46 mm`
 
 ## Today's values
 
-Today's forecast: `0.1000 mm` rainfall, `25.40 °C` maximum temperature.
+Today's forecast: `0.2000 mm` rainfall, `25.50 °C` maximum temperature.
 
-Total amount of water needed: `4.311 mm`
+Total amount of water needed: `4.341 mm`
 
-### [Watering needed today](today.txt) - `4.211 mm`
+### [Watering needed today](today.txt) - `4.141 mm`
 
 Values update every day around midnight.
 
