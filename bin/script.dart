@@ -125,6 +125,8 @@ Last updated: ✅ `${DateTime.now().toIso8601String()}`
 
 ## Weekly values
 
+${weekValuesTable(last7days)}
+
 Over the last week: `${weekRain.precise} mm` rainfall, `${weekMaxTemp.precise} °C` average daily maximal temperature.
 
 Total amount of water needed: `${weekWaterNeeded.precise} mm`
@@ -172,4 +174,12 @@ extension FixedPrecision on double {
   String get precise {
     return toStringAsPrecision(4);
   }
+}
+
+String weekValuesTable(Map<DateTime, List<double>> last7days) {
+  return '''
+| Date | Temperature | Water needed | Rainfall | Watering needed |
+|-----|-----|-----|-----|-----|
+${last7days.entries.map((e) => '| ${e.key.toIso8601String().substring(0, 10)} | ${e.value[1].precise} °C | ${waterAmountFor(e.value[1]).precise} mm | ${e.value[0].precise} mm | ${(waterAmountFor(e.value[1]) - e.value[0]).precise} mm |').join('\n')}
+''';
 }
