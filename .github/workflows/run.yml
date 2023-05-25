@@ -33,6 +33,9 @@ jobs:
       - uses: montudor/action-zip@v1
         with:
           args: unzip -qq lastweek/HABP_1D_46400_akt.zip -d lastweek
+          
+      - name: Delete original zip
+        run: rm -f "lastweek/HABP_1D_46400_akt.zip"
 
       - name: Run Script
         run: ./bin/script.exe
