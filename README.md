@@ -1,4 +1,4 @@
-# [fodor.pro/irrigation](https://fodor.pro/irrigation)
+# [irrigation.fodor.pro](https://irrigation.fodor.pro/)
 
 Calculates amount of watering needed for our garden, based on last week's measurements from a weather station nearby and a forecast for today.\
 Used by [FodorHome Water System](https://github.com/RedyAu/FodorHome_vizrendszer).
