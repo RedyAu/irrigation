@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:intl/intl.dart';
 
 late double squareFactor;
 late double linearFactor;
@@ -11,7 +12,8 @@ late String apiKey;
 late String query;
 
 main() async {
-  print('Reading config, calculating week.');
+  //!
+  print('Reading config');
 
   File configFile = File('config.json');
   if (!configFile.existsSync()) {
@@ -24,6 +26,9 @@ main() async {
   offset = jsonDecode(config)['offset'] as double;
   minimumTemperatureForIrrigation =
       jsonDecode(config)['minimumTemperatureForIrrigation'] as double;
+
+  //!
+  print('Reading last week data');
 
   List<String> lines = Directory('lastweek')
       .listSync()
@@ -52,11 +57,59 @@ main() async {
           element.key.isAfter(DateTime.now().subtract(Duration(days: 8))))
       .toList());
 
+  //!
+  print('Reading yesterday data');
+
+  lines = Directory('yesterday')
+      .listSync()
+      .whereType<File>()
+      .first
+      .readAsLinesSync();
+
+  lines.removeWhere((element) => element.startsWith('#'));
+  data = lines
+      .map((line) => line.split(';').map((e) => e.trim()).toList())
+      .toList();
+
+  data.removeWhere((element) => element.length < 2);
+
+  rainColumn = data[0].indexOf('r');
+  temperatureColumn = data[0].indexOf('tx');
+
+  data.removeAt(0);
+
+  Map<DateTime, List<double>> hours = Map.fromEntries(data.map((e) => MapEntry(
+      DateTime.parse(e[1].substring(0, 8) + "T" + e[1].substring(8)),
+      [double.parse(e[rainColumn]), double.parse(e[temperatureColumn])])));
+
+  Map<DateTime, List<double>> yesterdayHours = Map.fromEntries(hours.entries
+      .where((element) =>
+          element.key.isAfter(DateTime.now().subtract(Duration(days: 2))) &&
+          element.key.isBefore(DateTime.now().subtract(Duration(days: 1))))
+      .toList());
+
+  double yesterdayRain = yesterdayHours.values
+      .map((e) => e[0])
+      .reduce((value, element) => value + element);
+
+  double yesterdayMaxTemp = yesterdayHours.values
+      .map((e) => e[1])
+      .reduce((value, element) => value > element ? value : element);
+
+  DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
+  days[yesterday] = [
+    yesterdayRain,
+    yesterdayMaxTemp,
+  ];
+
+  //!
+  print('Calculating past values');
+
   double weekRain = last7days.values
       .map((e) => e[0])
       .reduce((value, element) => value + element);
 
-  double weekMaxTemp = (last7days.values
+  double weekMaxTempAvg = (last7days.values
           .map((e) => e[1])
           .reduce((value, element) => value + element) /
       last7days.length);
@@ -68,7 +121,7 @@ main() async {
 
   double weekIrrigate = weekWaterNeeded - weekRain;
 
-  if (weekMaxTemp < minimumTemperatureForIrrigation) weekIrrigate = 0;
+  if (weekMaxTempAvg < minimumTemperatureForIrrigation) weekIrrigate = 0;
 
   File lastWeekFile = File('docs/lastweek.txt');
   lastWeekFile.createSync(recursive: true);
@@ -127,7 +180,7 @@ Last updated: ✅ `${DateTime.now().toIso8601String()}`
 
 ${weekValuesTable(last7days)}
 
-Over the last week: `${weekRain.precise} mm` rainfall, `${weekMaxTemp.precise} °C` average daily maximal temperature.
+Over the last week: `${weekRain.precise} mm` rainfall, `${weekMaxTempAvg.precise} °C` average daily maximal temperature.
 
 Total amount of water needed: `${weekWaterNeeded.precise} mm`
 
