@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:intl/intl.dart';
 
 late double squareFactor;
 late double linearFactor;
 late double offset;
+
+late double inhibitNegativeFactor;
 
 late double minimumTemperatureForIrrigation;
 
@@ -26,6 +27,8 @@ main() async {
   offset = jsonDecode(config)['offset'] as double;
   minimumTemperatureForIrrigation =
       jsonDecode(config)['minimumTemperatureForIrrigation'] as double;
+
+  inhibitNegativeFactor = jsonDecode(config)['inhibitNegativeFactor'] as double;
 
   //!
   print('Reading last week data');
@@ -119,7 +122,10 @@ main() async {
       .map((e) => waterAmountFor(e.value[1]))
       .reduce((value, element) => value + element);
 
-  double weekIrrigate = weekWaterNeeded - weekRain;
+  double weekIrrigate = last7days.entries
+      .map((e) => calculateInhibitNegative(
+          waterAmountFor(e.value[1]) - e.value[0], e.key))
+      .reduce((value, element) => value + element);
 
   if (weekMaxTempAvg < minimumTemperatureForIrrigation) weekIrrigate = 0;
 
@@ -208,6 +214,7 @@ Values update every day around midnight.
 | linearFactor | `$linearFactor` |
 | offset | `$offset` |
 | minimumTemperatureForIrrigation | `$minimumTemperatureForIrrigation` |
+| inhibitNegativeFactor | `$inhibitNegativeFactor` |
 
 Water needed = `(squareFactor * temperature^2) + (linearFactor * temperature) + offset` - Calcualted for each day separately.
 
@@ -223,6 +230,14 @@ double waterAmountFor(double temperature) {
       offset;
 }
 
+double calculateInhibitNegative(double number, DateTime date) {
+  if (number < 0) {
+    return number /
+        ((DateTime.now().difference(date)).inDays * inhibitNegativeFactor);
+  }
+  return number;
+}
+
 extension FixedPrecision on double {
   String get precise {
     return toStringAsPrecision(4);
@@ -233,6 +248,6 @@ String weekValuesTable(Map<DateTime, List<double>> last7days) {
   return '''
 | Date | Temperature | Water needed | Rainfall | Watering needed |
 |-----|-----|-----|-----|-----|
-${last7days.entries.map((e) => '| ${e.key.toIso8601String().substring(0, 10)} | ${e.value[1].precise} °C | ${waterAmountFor(e.value[1]).precise} mm | ${e.value[0].precise} mm | ${(waterAmountFor(e.value[1]) - e.value[0]).precise} mm |').join('\n')}
+${last7days.entries.map((e) => '| ${e.key.toIso8601String().substring(0, 10)} | ${e.value[1].precise} °C | ${waterAmountFor(e.value[1]).precise} mm | ${e.value[0].precise} mm | ${calculateInhibitNegative((waterAmountFor(e.value[1]) - e.value[0]), e.key).precise} mm |').join('\n')}
 ''';
 }
