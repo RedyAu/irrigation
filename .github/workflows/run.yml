@@ -46,6 +46,11 @@ jobs:
         with:
           args: unzip -qq yesterday/HABP_1H_46400_now.zip -d yesterday
 
+      - name: Delete original zips
+        run: |
+          rm -f "lastweek/HABP_1D_46400_akt.zip"
+          rm -f "yesterday/HABP_1H_46400_now.zip"
+
       - name: Run Script
         run: ./bin/script.exe
 
