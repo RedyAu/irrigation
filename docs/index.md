@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows. [About](https://github.com/redyau/irrigation)
 
-Last updated: ✅ `2023-07-01T15:51:31.102325`
+Last updated: ✅ `2023-07-01T16:01:10.227958`
 
 ---
 
