@@ -85,19 +85,17 @@ main() async {
   yesterday = DateTime(yesterday.year, yesterday.month, yesterday.day)
       .subtract(Duration(days: 1));
 
-  print(yesterday);
-
   Map<DateTime, List<double>> hours = Map.fromEntries(data.map((e) => MapEntry(
       DateTime.parse(e[1].substring(0, 8) + "T" + e[1].substring(8)),
       [double.parse(e[rainColumn]), double.parse(e[temperatureColumn])])));
 
-  Map<DateTime, List<double>> yesterdayHours = Map.fromEntries(hours.entries
-      .where((element) =>
-          element.key.isAfter(yesterday.subtract(Duration(days: 1))) &&
-          element.key.isBefore(yesterday))
-      .toList());
-
-  print("Yesterday hourly data:\n" + yesterdayHours.toString());
+  Map<DateTime, List<double>> yesterdayHours = Map.fromEntries(
+    hours.entries.where(
+      (element) =>
+          element.key.isAfter(yesterday) &&
+          element.key.isBefore(yesterday.add(Duration(days: 1))),
+    ),
+  );
 
   double yesterdayRain;
   double yesterdayMaxTemp;
