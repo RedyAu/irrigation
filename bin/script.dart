@@ -81,25 +81,43 @@ main() async {
 
   data.removeAt(0);
 
+  DateTime yesterday = DateTime.now();
+  yesterday = DateTime(yesterday.year, yesterday.month, yesterday.day)
+      .subtract(Duration(days: 1));
+
+  print(yesterday);
+
   Map<DateTime, List<double>> hours = Map.fromEntries(data.map((e) => MapEntry(
       DateTime.parse(e[1].substring(0, 8) + "T" + e[1].substring(8)),
       [double.parse(e[rainColumn]), double.parse(e[temperatureColumn])])));
 
   Map<DateTime, List<double>> yesterdayHours = Map.fromEntries(hours.entries
       .where((element) =>
-          element.key.isAfter(DateTime.now().subtract(Duration(days: 2))) &&
-          element.key.isBefore(DateTime.now().subtract(Duration(days: 1))))
+          element.key.isAfter(yesterday.subtract(Duration(days: 1))) &&
+          element.key.isBefore(yesterday))
       .toList());
 
-  double yesterdayRain = yesterdayHours.values
-      .map((e) => e[0])
-      .reduce((value, element) => value + element);
+  print("Yesterday hourly data:\n" + yesterdayHours.toString());
 
-  double yesterdayMaxTemp = yesterdayHours.values
-      .map((e) => e[1])
-      .reduce((value, element) => value > element ? value : element);
+  double yesterdayRain;
+  double yesterdayMaxTemp;
 
-  DateTime yesterday = DateTime.now().subtract(Duration(days: 1));
+  try {
+    yesterdayRain = yesterdayHours.values
+        .map((e) => e[0])
+        .reduce((value, element) => value + element);
+
+    yesterdayMaxTemp = yesterdayHours.values
+        .map((e) => e[1])
+        .reduce((value, element) => value > element ? value : element);
+  } catch (e) {
+    print("Error calculating yesterday values:");
+    print(e);
+
+    yesterdayRain = 0;
+    yesterdayMaxTemp = 0;
+  }
+
   days[yesterday] = [
     yesterdayRain,
     yesterdayMaxTemp,
@@ -108,24 +126,39 @@ main() async {
   //!
   print('Calculating past values');
 
-  double weekRain = last7days.values
-      .map((e) => e[0])
-      .reduce((value, element) => value + element);
+  double weekRain;
+  double weekMaxTempAvg;
+  double weekWaterNeeded;
+  double weekIrrigate;
 
-  double weekMaxTempAvg = (last7days.values
-          .map((e) => e[1])
-          .reduce((value, element) => value + element) /
-      last7days.length);
+  try {
+    weekRain = last7days.values
+        .map((e) => e[0])
+        .reduce((value, element) => value + element);
 
-  // get water amount for each day separately
-  double weekWaterNeeded = last7days.entries
-      .map((e) => waterAmountFor(e.value[1]))
-      .reduce((value, element) => value + element);
+    weekMaxTempAvg = (last7days.values
+            .map((e) => e[1])
+            .reduce((value, element) => value + element) /
+        last7days.length);
 
-  double weekIrrigate = last7days.entries
-      .map((e) => calculateInhibitNegative(
-          waterAmountFor(e.value[1]) - e.value[0], e.key))
-      .reduce((value, element) => value + element);
+    // get water amount for each day separately
+    weekWaterNeeded = last7days.entries
+        .map((e) => waterAmountFor(e.value[1]))
+        .reduce((value, element) => value + element);
+
+    weekIrrigate = last7days.entries
+        .map((e) => calculateInhibitNegative(
+            waterAmountFor(e.value[1]) - e.value[0], e.key))
+        .reduce((value, element) => value + element);
+  } catch (e) {
+    print("Error calculating past values:");
+    print(e);
+
+    weekRain = 0;
+    weekMaxTempAvg = 0;
+    weekWaterNeeded = 0;
+    weekIrrigate = 0;
+  }
 
   if (weekMaxTempAvg < minimumTemperatureForIrrigation) weekIrrigate = 0;
 
