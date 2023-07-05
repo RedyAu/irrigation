@@ -116,7 +116,7 @@ main() async {
     yesterdayMaxTemp = 0;
   }
 
-  days[yesterday] = [
+  last7days[yesterday] = [
     yesterdayRain,
     yesterdayMaxTemp,
   ];
