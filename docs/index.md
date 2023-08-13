@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows. [About](https://github.com/redyau/irrigation)
 
-Last updated: ✅ `2023-08-12T05:33:50.595126`
+Last updated: ✅ `2023-08-13T05:33:48.737715`
 
 ---
 
@@ -10,30 +10,30 @@ Last updated: ✅ `2023-08-12T05:33:50.595126`
 
 | Date | Temperature | Water needed | Rainfall | Watering needed |
 |-----|-----|-----|-----|-----|
-| 2023-08-05 | 30.70 °C | 6.186 mm | 24.50 mm | -2.378 mm |
 | 2023-08-06 | 22.30 °C | 3.438 mm | 2.200 mm | 1.238 mm |
 | 2023-08-07 | 21.80 °C | 3.312 mm | 1.500 mm | 1.812 mm |
 | 2023-08-08 | 23.30 °C | 3.701 mm | 0.000 mm | 3.701 mm |
 | 2023-08-09 | 25.00 °C | 4.189 mm | 0.000 mm | 4.189 mm |
 | 2023-08-10 | 25.60 °C | 4.373 mm | 0.000 mm | 4.373 mm |
 | 2023-08-11 | 26.30 °C | 4.595 mm | 0.000 mm | 4.595 mm |
+| 2023-08-12 | 28.00 °C | 5.170 mm | 0.000 mm | 5.170 mm |
 
 
-Over the last week: `28.20 mm` rainfall, `25.00 °C` average daily maximal temperature.
+Over the last week: `3.700 mm` rainfall, `24.61 °C` average daily maximal temperature.
 
-Total amount of water needed: `29.79 mm`
+Total amount of water needed: `28.78 mm`
 
-### [Watering needed over the last week](lastweek.txt) - `17.53 mm`
+### [Watering needed over the last week](lastweek.txt) - `25.08 mm`
 
 ---
 
 ## Today's values
 
-Today's forecast: `0.000 mm` rainfall, `28.00 °C` maximum temperature.
+Today's forecast: `0.000 mm` rainfall, `30.80 °C` maximum temperature.
 
-Total amount of water needed: `5.170 mm`
+Total amount of water needed: `6.226 mm`
 
-### [Watering needed today](today.txt) - `5.170 mm`
+### [Watering needed today](today.txt) - `6.226 mm`
 
 Values update every day around midnight.
 
