@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows. [About](https://github.com/redyau/irrigation)
 
-Last updated: ✅ `2023-10-31T04:31:04.777336`
+Last updated: ✅ `2024-04-01T05:30:57.809973`
 
 ---
 
@@ -10,30 +10,30 @@ Last updated: ✅ `2023-10-31T04:31:04.777336`
 
 | Date | Temperature | Water needed | Rainfall | Watering needed |
 |-----|-----|-----|-----|-----|
-| 2023-10-24 | 23.70 °C | 3.811 mm | 1.300 mm | 2.511 mm |
-| 2023-10-25 | 20.50 °C | 3.006 mm | 0.000 mm | 3.006 mm |
-| 2023-10-26 | 19.80 °C | 2.854 mm | 10.30 mm | -1.354 mm |
-| 2023-10-27 | 18.60 °C | 2.612 mm | 9.500 mm | -1.565 mm |
-| 2023-10-28 | 17.50 °C | 2.412 mm | 0.6000 mm | 1.812 mm |
-| 2023-10-29 | 21.70 °C | 3.288 mm | 0.000 mm | 3.288 mm |
-| 2023-10-30 | 23.40 °C | 3.728 mm | 0.000 mm | 3.728 mm |
+| 2024-03-25 | 13.60 °C | 1.870 mm | 0.000 mm | 1.870 mm |
+| 2024-03-26 | 16.10 °C | 2.187 mm | 0.000 mm | 2.187 mm |
+| 2024-03-27 | 19.70 °C | 2.833 mm | 1.200 mm | 1.633 mm |
+| 2024-03-28 | 19.20 °C | 2.730 mm | 1.000 mm | 1.730 mm |
+| 2024-03-29 | 22.10 °C | 3.387 mm | 0.000 mm | 3.387 mm |
+| 2024-03-30 | 26.20 °C | 4.563 mm | 0.000 mm | 4.563 mm |
+| 2024-03-30 | 26.20 °C | 4.563 mm | 0.000 mm | 4.563 mm |
 
 
-Over the last week: `21.70 mm` rainfall, `20.74 °C` average daily maximal temperature.
+Over the last week: `2.200 mm` rainfall, `20.44 °C` average daily maximal temperature.
 
-Total amount of water needed: `21.71 mm`
+Total amount of water needed: `22.13 mm`
 
-### [Watering needed over the last week](lastweek.txt) - `11.43 mm`
+### [Watering needed over the last week](lastweek.txt) - `19.93 mm`
 
 ---
 
 ## Today's values
 
-Today's forecast: `9.280 mm` rainfall, `20.70 °C` maximum temperature.
+Today's forecast: `0.000 mm` rainfall, `26.60 °C` maximum temperature.
 
-Total amount of water needed: `3.052 mm`
+Total amount of water needed: `4.693 mm`
 
-### [Watering needed today](today.txt) - `-6.228 mm`
+### [Watering needed today](today.txt) - `4.693 mm`
 
 Values update every day around midnight.
 
