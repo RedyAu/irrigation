@@ -2,7 +2,7 @@ name: Irrigation CRON Run
 
 on:
   schedule:
-   - cron: '30 3 * 4-10 *'
+   - cron: '30 3 * * *'
   workflow_dispatch:
 
 jobs:
