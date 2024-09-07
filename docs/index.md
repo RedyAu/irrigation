@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows. [About](https://github.com/redyau/irrigation)
 
-Last updated: ✅ `2024-09-06T05:32:42.007545`
+Last updated: ✅ `2024-09-07T05:32:33.316853`
 
 ---
 
@@ -10,30 +10,30 @@ Last updated: ✅ `2024-09-06T05:32:42.007545`
 
 | Date | Temperature | Water needed | Rainfall | Watering needed |
 |-----|-----|-----|-----|-----|
-| 2024-08-30 | 33.60 °C | 7.417 mm | 0.000 mm | 7.417 mm |
 | 2024-08-31 | 34.50 °C | 7.828 mm | 0.000 mm | 7.828 mm |
 | 2024-09-01 | 33.50 °C | 7.372 mm | 0.000 mm | 7.372 mm |
 | 2024-09-02 | 33.60 °C | 7.417 mm | 0.000 mm | 7.417 mm |
 | 2024-09-03 | 34.20 °C | 7.689 mm | 0.000 mm | 7.689 mm |
 | 2024-09-04 | 34.30 °C | 7.735 mm | 0.000 mm | 7.735 mm |
 | 2024-09-05 | 30.90 °C | 6.266 mm | 0.000 mm | 6.266 mm |
+| 2024-09-06 | 29.80 °C | 5.833 mm | 0.000 mm | 5.833 mm |
 
 
-Over the last week: `0.000 mm` rainfall, `33.51 °C` average daily maximal temperature.
+Over the last week: `0.000 mm` rainfall, `32.97 °C` average daily maximal temperature.
 
-Total amount of water needed: `51.72 mm`
+Total amount of water needed: `50.14 mm`
 
-### [Watering needed over the last week](lastweek.txt) - `51.72 mm`
+### [Watering needed over the last week](lastweek.txt) - `50.14 mm`
 
 ---
 
 ## Today's values
 
-Today's forecast: `0.04000 mm` rainfall, `31.50 °C` maximum temperature.
+Today's forecast: `0.000 mm` rainfall, `32.30 °C` maximum temperature.
 
-Total amount of water needed: `6.511 mm`
+Total amount of water needed: `6.847 mm`
 
-### [Watering needed today](today.txt) - `6.471 mm`
+### [Watering needed today](today.txt) - `6.847 mm`
 
 Values update every day around midnight.
 
