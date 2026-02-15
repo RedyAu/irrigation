@@ -2,7 +2,7 @@
 
 This site hosts necessary irrigation values that our watering system follows. [About](https://github.com/redyau/irrigation)
 
-Last updated: ✅ `2026-02-14T05:12:49.747568`
+Last updated: ✅ `2026-02-15T05:14:54.458501`
 
 ---
 
@@ -10,18 +10,18 @@ Last updated: ✅ `2026-02-14T05:12:49.747568`
 
 | Date | Temperature | Water needed | Rainfall | Watering needed |
 |-----|-----|-----|-----|-----|
-| 2026-02-07 | 9.900 °C | 1.598 mm | 0.000 mm | 1.598 mm |
 | 2026-02-08 | 10.20 °C | 1.612 mm | 0.000 mm | 1.612 mm |
 | 2026-02-09 | 7.500 °C | 1.548 mm | 0.2000 mm | 1.348 mm |
 | 2026-02-10 | 4.500 °C | 1.624 mm | 0.1000 mm | 1.524 mm |
 | 2026-02-11 | 8.700 °C | 1.561 mm | 1.100 mm | 0.4607 mm |
 | 2026-02-12 | 15.00 °C | 2.035 mm | 1.200 mm | 0.8346 mm |
 | 2026-02-13 | 13.60 °C | 1.870 mm | 0.000 mm | 1.870 mm |
+| 2026-02-14 | 13.40 °C | 1.850 mm | 0.000 mm | 1.850 mm |
 
 
-Over the last week: `2.600 mm` rainfall, `9.914 °C` average daily maximal temperature.
+Over the last week: `2.600 mm` rainfall, `10.41 °C` average daily maximal temperature.
 
-Total amount of water needed: `11.85 mm`
+Total amount of water needed: `12.10 mm`
 
 ### [Watering needed over the last week](lastweek.txt) - `0.000 mm`
 
@@ -29,9 +29,9 @@ Total amount of water needed: `11.85 mm`
 
 ## Today's values
 
-Today's forecast: `0.5000 mm` rainfall, `12.00 °C` maximum temperature.
+Today's forecast: `25.03 mm` rainfall, `5.800 °C` maximum temperature.
 
-Total amount of water needed: `1.724 mm`
+Total amount of water needed: `1.572 mm`
 
 ### [Watering needed today](today.txt) - `0.000 mm`
 
